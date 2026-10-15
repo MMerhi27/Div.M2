@@ -1,0 +1,746 @@
+/* 1. GLOBAL FIXES*/
+html {
+    scroll-padding-top: 100px;
+}
+
+body {
+    min-width: 0;
+    overflow-x: clip;
+}
+
+.container {
+    width: 90%;
+    max-width: 1500px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.hero .div_text,
+.team .team_text,
+.team .team_cards,
+.projects .project_card,
+.contact .cta_left,
+.contact .cta_right {
+    min-width: 0;
+}
+
+/* 2. NAVBAR - DESKTOP */
+header nav {
+    gap: 20px;
+}
+
+header nav .logo {
+    flex-shrink: 0;
+}
+
+header nav .links {
+    gap: clamp(15px, 2vw, 40px);
+}
+
+header nav .nav_right {
+    flex-shrink: 0;
+}
+
+/* Hamburger hidden on desktop */
+.menu_toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--main-color);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* 3. HERO - ALL DESKTOP SIZES */
+.hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 140px 0 80px;
+}
+
+.hero .container {
+    min-height: 550px;
+    isolation: isolate;
+}
+
+.hero .container::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 40px;
+}
+
+.hero .div_text {
+    width: min(60%, 650px);
+    max-width: 650px;
+    margin-left: clamp(25px, 4vw, 65px);
+    padding: 65px 0;
+}
+
+.hero .div_text h1 {
+    font-size: clamp(36px, 3.5vw, 60px);
+    overflow-wrap: break-word;
+}
+
+.hero .btns {
+    flex-wrap: wrap;
+}
+
+/* 4. SERVICES */
+.service .boxes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.service .boxes .box {
+    width: 100%;
+    min-width: 0;
+}
+
+/* 5. TEAM */
+.team .container {
+    gap: 35px;
+}
+
+.team .team_text {
+    width: 28%;
+    margin-top: 35px;
+}
+
+.team .team_text h2 {
+    font-size: clamp(36px, 3.5vw, 60px);
+}
+
+.team .team_cards {
+    width: 68%;
+    gap: 15px;
+}
+
+.team .team_cards .team_card {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    padding: 35px 12px;
+    border-radius: 18px;
+}
+
+.team .team_card .btn {
+    padding: 12px 15px;
+    font-size: 13px;
+}
+
+.team .team_cards .team_card:hover {
+    scale: 1;
+    transform: translateY(-5px);
+}
+
+
+/* 6. PROJECTS */
+.projects .projects_cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.projects .project_card {
+    width: 100%;
+    min-width: 0;
+}
+
+.projects .project_card img {
+    height: clamp(160px, 13vw, 220px);
+}
+
+.projects .project_tags span {
+    font-size: 12px;
+}
+
+/* 7. CONTACT */
+.contact .cta_left {
+    flex: 1;
+}
+
+.contact .cta_right {
+    flex-shrink: 0;
+}
+
+
+/* 8. LAPTOP MAX 1199px */
+@media (max-width: 1199px) {
+
+    header nav .logo img {
+        width: 155px;
+    }
+
+    header nav .links a {
+        font-size: 14px;
+    }
+
+    header nav .nav_right {
+        gap: 15px;
+    }
+
+    header nav .btn {
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+
+    .hero .container {
+        min-height: 500px;
+    }
+
+    .hero .div_text {
+        width: 65%;
+    }
+
+    /* Team */
+
+    .team .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .team .team_text {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .team .team_text h2 {
+        font-size: 46px;
+    }
+
+    .team .team_cards {
+        width: 100%;
+    }
+
+    .team .team_cards .team_card {
+        padding: 35px 20px;
+    }
+
+    /* Projects */
+
+    .projects .projects_cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .projects .project_card img {
+        height: 220px;
+    }
+
+    /* Contact */
+
+    .contact .contact_cta {
+        padding: 35px;
+    }
+
+    .contact .cta_text h2 {
+        font-size: 30px;
+    }
+}
+
+
+/* 9. TABLET + MOBILE NAVBAR MAX 992pxn*/
+@media (max-width: 992px) {
+
+    html {
+        scroll-padding-top: 80px;
+    }
+
+    section {
+        padding: 65px 0;
+        scroll-margin-top: 80px;
+    }
+
+    /* Navbar */
+    header {
+        height: 80px;
+        background: #131416;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    header nav {
+        gap: 15px;
+    }
+
+    header nav .logo img {
+        width: 150px;
+    }
+
+    .menu_toggle {
+        display: flex;
+        order: 3;
+        flex-shrink: 0;
+    }
+
+    header nav .nav_right {
+        order: 2;
+        margin-left: auto;
+    }
+
+    /* Dropdown Menu */
+    header nav .links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+        padding: 12px 5%;
+
+        background: #131416;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    header nav .links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    header nav .links a {
+        display: block;
+        width: 100%;
+        padding: 15px 10px;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    header nav .links a:last-child {
+        border-bottom: none;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding: 115px 0 45px;
+    }
+
+    .hero .container {
+        min-height: 470px;
+    }
+
+    .hero .container::before {
+        border-radius: 30px;
+    }
+
+    .hero .div_text {
+        width: 75%;
+        margin-left: 35px;
+        padding: 60px 0;
+    }
+
+    .hero .div_text h1 {
+        font-size: clamp(34px, 5vw, 48px);
+    }
+
+    /* Services */
+    .service .boxes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .service .boxes .box {
+        padding: 40px 20px;
+    }
+
+    .service .boxes .box:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Team */
+    .team .team_cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .team .team_cards .team_card {
+        width: 100%;
+        padding: 30px 12px;
+    }
+
+    .team .team_card .btn {
+        padding: 12px 14px;
+        font-size: 12px;
+    }
+
+    /* Contact */
+    .contact .contact_cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 25px;
+    }
+
+    .contact .cta_right {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .contact .cta_right button,
+    .contact .cta_right a {
+        flex: 1;
+    }
+
+    /* Footer */
+    .footer_content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* 10. MOBILE MAX 767px */
+@media (max-width: 767px) {
+
+    .container {
+        width: 90%;
+    }
+
+    section {
+        padding: 55px 0;
+    }
+
+    /* Navbar */
+    header nav .logo img {
+        width: 140px;
+    }
+
+    header nav .nav_right .btn {
+        display: none;
+    }
+
+    header nav .nav_right {
+        gap: 10px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 105px 0 35px;
+    }
+
+    .hero .container {
+        min-height: auto;
+    }
+
+    .hero .container::before {
+        border-radius: 24px;
+        border-width: 2px;
+        background-position: center;
+    }
+
+    .hero .div_text {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        padding: 65px 25px;
+    }
+
+    .hero .div_text p:first-of-type {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero .div_text h1 {
+        font-size: clamp(30px, 6vw, 42px);
+        line-height: 1.15;
+    }
+
+    .hero .div_text p:nth-of-type(2) {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .hero .btns {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .hero .btns .btn {
+        padding: 13px 18px;
+        font-size: 13px;
+    }
+
+    /* Section Headings */
+    .top_section h2 {
+        font-size: 28px;
+    }
+
+    /* Services */
+    .service .boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .service .boxes .box:last-child {
+        grid-column: auto;
+    }
+
+    .service .boxes .box {
+        padding: 35px 22px;
+    }
+
+    .service .boxes .box i {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+
+    .service .boxes .box p {
+        margin-bottom: 10px;
+    }
+
+    /* Team */
+    .team .container {
+        margin-top: 0;
+    }
+
+    .team .team_text {
+        text-align: center;
+    }
+
+    .team .team_text h2 {
+        font-size: 40px;
+    }
+
+    .team .team_text .btns {
+        justify-content: center;
+    }
+
+    .team .team_cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .team .team_cards .team_card {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 35px 20px;
+    }
+
+    .team .team_card p {
+        margin-bottom: 25px;
+    }
+
+    .team .team_card .btn {
+        font-size: 14px;
+        padding: 12px 22px;
+    }
+
+    /* Projects */
+    .projects .projects_top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .projects .projects_title h2 {
+        font-size: 32px;
+    }
+
+    .projects .projects_cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .projects .project_card {
+        width: 100%;
+    }
+
+    .projects .project_card img {
+        height: clamp(180px, 50vw, 260px);
+    }
+
+    /* Contact */
+    .contact .contact_cta {
+        padding: 30px 22px;
+        border-radius: 18px;
+    }
+
+    .contact .cta_left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .contact .cta_left i {
+        font-size: 35px;
+    }
+
+    .contact .cta_text h2 {
+        font-size: 28px;
+        line-height: 1.25;
+    }
+
+    .contact .cta_right {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .contact .cta_right button,
+    .contact .cta_right a {
+        width: 100%;
+    }
+
+    /* Project Form Popup */
+    .modal_overlay {
+        padding: 12px;
+    }
+
+    .project_modal {
+        width: 100%;
+        max-height: calc(100dvh - 24px);
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    /* Footer */
+    .footer_content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    footer {
+        padding: 50px 0 20px;
+    }
+
+    .footer_bottom {
+        margin-top: 35px;
+    }
+}
+
+
+/* 11. SMALL MOBILE MAX 480px */
+@media (max-width: 480px) {
+
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    header {
+        height: 70px;
+    }
+
+    header nav .logo img {
+        width: 125px;
+    }
+
+    header nav .icons a i {
+        font-size: 18px;
+    }
+
+    .menu_toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .hero {
+        padding-top: 90px;
+    }
+
+    .hero .div_text {
+        padding: 50px 18px;
+    }
+
+    .hero .div_text h1 {
+        font-size: clamp(27px, 8vw, 36px);
+    }
+
+    .hero .div_text p:nth-of-type(2) {
+        font-size: 13px;
+    }
+
+    .hero .btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero .btns .btn {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .team .team_text h2 {
+        font-size: 34px;
+    }
+
+    .projects .projects_title h2 {
+        font-size: 29px;
+    }
+
+    .projects .projects_top .btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .contact .cta_text h2 {
+        font-size: 25px;
+    }
+
+    .modal_header h2 {
+        font-size: 21px;
+    }
+}
+
+
+/* 12. TOUCH DEVICES */
+@media (hover: none) {
+
+    .btn:hover,
+    .team_card .btn:hover {
+        scale: 1;
+    }
+
+    .team .team_cards .team_card:hover {
+        transform: none;
+    }
+}
+
+
+/* 13. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .menu_toggle,
+    header nav .links,
+    .btn,
+    .team .team_cards .team_card {
+        transition: none;
+    }
+}
