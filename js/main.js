@@ -1,5 +1,5 @@
-/* 1. Navbar Scroll Effect */
 
+/* 1. NAVBAR SCROLL EFFECT */
 const header = document.querySelector("header");
 
 function updateHeader() {
@@ -12,8 +12,7 @@ window.addEventListener("scroll", updateHeader);
 updateHeader();
 
 
-/* 2. Responsive Mobile Menu */
-
+/* 2. RESPONSIVE MOBILE MENU */
 const menuToggle = document.getElementById("menu_toggle");
 const navLinks = document.getElementById("links");
 
@@ -82,33 +81,7 @@ if (menuToggle && navLinks) {
     });
 }
 
-
-/* 3. Portfolio Message */
-
-const portfolioBtn = document.getElementById("view_portfolio_btn");
-const portfolioMessage = document.getElementById("portfolio_message");
-
-let portfolioTimer;
-
-if (portfolioBtn && portfolioMessage) {
-
-    portfolioBtn.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        portfolioMessage.classList.add("show");
-
-        clearTimeout(portfolioTimer);
-
-        portfolioTimer = setTimeout(function () {
-            portfolioMessage.classList.remove("show");
-        }, 4000);
-    });
-}
-
-
-/* 4. Project Request Popup */
-
+/* 3. PROJECT REQUEST POPUP */
 const openProjectForm = document.getElementById("open_project_form");
 const closeProjectForm = document.getElementById("close_button");
 const modalOverlay = document.getElementById("modal_overlay");
@@ -116,7 +89,7 @@ const modalOverlay = document.getElementById("modal_overlay");
 let previousBodyOverflow = "";
 let previousFocusedElement = null;
 
-// Open popup
+// Open Project Popup
 function openModal() {
     if (!modalOverlay) return;
 
@@ -135,7 +108,7 @@ function openModal() {
     }
 }
 
-// Close popup
+// Close Project Popup
 function closeModal() {
     if (!modalOverlay) return;
 
@@ -182,8 +155,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/* 5. Book a Meeting Popup */
-
+/* 4. BOOK A MEETING POPUP */
 const openMeetingBtn = document.getElementById("open_meeting_form");
 const closeMeetingBtn = document.getElementById("close_meeting_form");
 const meetingOverlay = document.getElementById("meeting_overlay");
@@ -210,6 +182,7 @@ updateMeetingMinDate();
 // Open Meeting Popup
 function openMeetingModal() {
     if (!meetingOverlay) return;
+
     if (meetingOverlay.classList.contains("active")) return;
 
     closeMenu();
@@ -231,29 +204,33 @@ function openMeetingModal() {
 // Close Meeting Popup
 function closeMeetingModal() {
     if (!meetingOverlay) return;
+
     if (!meetingOverlay.classList.contains("active")) return;
 
     meetingOverlay.classList.remove("active");
     document.body.style.overflow = meetingPreviousOverflow;
 
-    if (meetingPreviousFocus &&
-        typeof meetingPreviousFocus.focus === "function") {
+    if (
+        meetingPreviousFocus &&
+        typeof meetingPreviousFocus.focus === "function"
+    ) {
         meetingPreviousFocus.focus();
     }
 }
 
-// Button Events
+// Open Meeting Button
 if (openMeetingBtn) {
     openMeetingBtn.addEventListener("click", openMeetingModal);
 }
 
+// Close Meeting Button
 if (closeMeetingBtn) {
     closeMeetingBtn.addEventListener("click", closeMeetingModal);
 }
 
 // Close when clicking outside
 if (meetingOverlay) {
-    meetingOverlay.addEventListener("click", function(event) {
+    meetingOverlay.addEventListener("click", function (event) {
         if (event.target === meetingOverlay) {
             closeMeetingModal();
         }
@@ -261,7 +238,7 @@ if (meetingOverlay) {
 }
 
 // Close with ESC
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
         closeMeetingModal();
     }
@@ -269,40 +246,68 @@ document.addEventListener("keydown", function(event) {
 
 // Validate Meeting Request
 if (meetingForm) {
-    meetingForm.addEventListener("submit", function(event) {
+
+    meetingForm.addEventListener("submit", function (event) {
+
+        const timeInput = document.getElementById("meeting_time");
+        const whatsappInput = document.getElementById("meeting_whatsapp");
+
+        if (!meetingDate || !timeInput || !whatsappInput) {
+            event.preventDefault();
+            return;
+        }
+
         const dateValue = meetingDate.value;
-        const timeValue = document.getElementById("meeting_time").value;
-        const whatsapp = document.getElementById("meeting_whatsapp").value.trim();
+        const timeValue = timeInput.value;
+        const whatsapp = whatsappInput.value.trim();
 
         const digits = whatsapp.replace(/\D/g, "");
 
+        // Validate WhatsApp number
         if (digits.length < 8 || digits.length > 15) {
             event.preventDefault();
-            alert("Please enter a valid WhatsApp number with country code.");
+
+            alert(
+                "Please enter a valid WhatsApp number with country code."
+            );
+
             return;
         }
 
-        const selectedDateTime = new Date(`${dateValue}T${timeValue}`);
+        // Validate meeting date and time
+        const selectedDateTime = new Date(
+            `${dateValue}T${timeValue}`
+        );
 
-        if (Number.isNaN(selectedDateTime.getTime()) ||
-            selectedDateTime <= new Date()) {
+        if (
+            Number.isNaN(selectedDateTime.getTime()) ||
+            selectedDateTime <= new Date()
+        ) {
             event.preventDefault();
-            alert("Please choose a future meeting date and time.");
+
+            alert(
+                "Please choose a future meeting date and time."
+            );
+
             return;
         }
 
-        // Prevent submitting until SheetMonkey is connected
-        if (meetingForm.action.includes("YOUR_MEETING_SHEETMONKEY_URL")) {
+        // Check SheetMonkey connection
+        if (
+            meetingForm.action.includes(
+                "YOUR_MEETING_SHEETMONKEY_URL"
+            )
+        ) {
             event.preventDefault();
-            alert("Meeting requests are not connected yet.");
+
+            alert(
+                "Meeting requests are not connected yet."
+            );
         }
     });
 }
 
-
-
-/* 6. Projects Coming Soon Message */
-
+/* 5. PROJECTS COMING SOON MESSAGE*/
 const projectButtons = document.querySelectorAll(
     ".projects .project_heading a"
 );
@@ -313,8 +318,10 @@ const projectComingSoon = document.getElementById(
 
 let projectMessageTimer;
 
-projectButtons.forEach(function(button) {
-    button.addEventListener("click", function(event) {
+projectButtons.forEach(function (button) {
+
+    button.addEventListener("click", function (event) {
+
         event.preventDefault();
 
         if (!projectComingSoon) return;
@@ -323,7 +330,7 @@ projectButtons.forEach(function(button) {
 
         clearTimeout(projectMessageTimer);
 
-        projectMessageTimer = setTimeout(function() {
+        projectMessageTimer = setTimeout(function () {
             projectComingSoon.classList.remove("show");
         }, 4000);
     });
